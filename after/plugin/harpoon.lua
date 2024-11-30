@@ -18,4 +18,4 @@ vim.keymap.set("n", "<C-s>", function () ui.nav_file(4) end)
 
 -- swap to next and previous
 vim.keymap.set("n", "<C-P>", function () ui.nav_prev() end)
-vim.keymap.set("n", "<C-N>", function () ui.nav_next() end)
+vim.keymap.set("n", "<C-S-N>", function () ui.nav_next() end)

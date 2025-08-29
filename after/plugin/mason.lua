@@ -1,16 +1,6 @@
-require('mason').setup({})
-require('mason-lspconfig').setup({
-  -- Replace the language servers listed here 
-  -- with the ones you want to install
-  ensure_installed = { 'lua_ls', 'gopls' },
-  handlers = {
-    function(server_name)
-      require('lspconfig')[server_name].setup({})
-    end,
-  },
-})
+local lspconfig = require('lspconfig')
 
-require('lspconfig').lua_ls.setup({
+lspconfig.lua_ls.setup({
 	settings = {
 		Lua = {
 			diagnostics = {
@@ -18,4 +8,30 @@ require('lspconfig').lua_ls.setup({
 			}
 		}
 	}
+})
+
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+lspconfig.gopls.setup({
+  capabilities = capabilities,
+  settings = {
+    gopls = {
+      analyses = {
+        shadow = true,
+        unusedwrite = true,
+        unusedvariable = true,
+      },
+      staticcheck = true,
+      gofumpt = true,
+      hints = {
+          assignVariableTypes = true,
+          compositeLiteralFields = true,
+          compositeLiteralTypes = true,
+          constantValues = true,
+          functionTypeParameters = true,
+          parameterNames = true,
+          rangeVariableTypes = true,
+      },
+    },
+  },
 })

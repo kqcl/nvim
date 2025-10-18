@@ -1,19 +1,15 @@
-local lspconfig = require('lspconfig')
+-- Define configurations
+vim.lsp.config.lua_ls = {
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { "vim" },
+      },
+    },
+  },
+}
 
-lspconfig.lua_ls.setup({
-	settings = {
-		Lua = {
-			diagnostics = {
-				globals = { "vim" }
-			}
-		}
-	}
-})
-
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-lspconfig.gopls.setup({
-  capabilities = capabilities,
+vim.lsp.config.gopls = {
   settings = {
     gopls = {
       analyses = {
@@ -24,14 +20,19 @@ lspconfig.gopls.setup({
       staticcheck = true,
       gofumpt = true,
       hints = {
-          assignVariableTypes = true,
-          compositeLiteralFields = true,
-          compositeLiteralTypes = true,
-          constantValues = true,
-          functionTypeParameters = true,
-          parameterNames = true,
-          rangeVariableTypes = true,
+        assignVariableTypes = true,
+        compositeLiteralFields = true,
+        compositeLiteralTypes = true,
+        constantValues = true,
+        functionTypeParameters = true,
+        parameterNames = true,
+        rangeVariableTypes = true,
       },
     },
   },
-})
+}
+
+-- Enable servers
+vim.lsp.enable('lua_ls')
+vim.lsp.enable('gopls')
+

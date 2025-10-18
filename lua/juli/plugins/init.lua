@@ -37,7 +37,7 @@ local M = {
     { "hrsh7th/cmp-path" },
     { "hrsh7th/cmp-cmdline" },
     { "hrsh7th/nvim-cmp" },
-    { "L3MON4D3/LuaSnip" },
+    -- { "L3MON4D3/LuaSnip" },
     { "saadparwaiz1/cmp_luasnip" },
     { "j-hui/fidget.nvim" },
     { 'numToStr/Comment.nvim' },
@@ -87,15 +87,6 @@ local M = {
         ft = {"go", 'gomod'},
         build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
     },
-    {
-        "lervag/vimtex",
-        lazy = false,     -- we don't want to lazy load VimTeX
-        -- tag = "v2.15", -- uncomment to pin to a specific release
-        init = function()
-            -- VimTeX configuration goes here, e.g.
-            vim.g.vimtex_view_method = "zathura"
-        end
-    }
 }
 
 return { M }
